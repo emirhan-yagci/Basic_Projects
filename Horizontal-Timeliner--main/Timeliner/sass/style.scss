@@ -1,0 +1,115 @@
+@import  "variables";
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+}
+body{
+    
+}
+%active{
+    cursor: pointer;
+    color: $active-color !important;
+    background-color: $active-color !important;
+}
+.active::before{
+    @extend %active;
+}
+
+.active .step-text{
+  color: $active-color !important;
+    
+}
+.timeliner-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+   
+}
+.showsteps-wrap{
+    margin-top: 50px;
+    width: 100%;
+    border-radius: 12px;
+    height: 300px;
+    background-color: #ffe1a8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div{
+        color: white;
+    }
+    & > div:not(div[data-show="1"]){
+        display: none;
+    }
+}
+
+.steps-wrap{
+    
+    width: 700px;
+    height: 15px;
+    background-color: $passive-color;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .steps{
+        width: 7px !important;
+        height: 7px !important;
+        padding: 3.1px;
+        border: 4px solid #d29630;
+        border-radius: 50%;
+        position: relative;
+        z-index: 2;
+        transition: all 400ms;
+        
+    }
+    .steps::before{
+        content: "";
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: 1px solid #ff7b00;
+        background-color: $passive-color;
+        position: absolute;
+        transform: translateX(-50%);
+        top: -100px;
+        transition: all 400ms;
+    }
+    .step-text{
+        position: absolute;
+        top: -50px;
+        width: 10px;
+        display: flex;
+        justify-content: center;
+        white-space: nowrap;
+        color: $text-color;
+        background-color: transparent !important;
+        transition: all 400ms;
+        
+    }
+    .modifiable-line{
+        position: absolute;
+        background-color: $active-color;
+        transition: all 370ms;
+        width: 0px;
+        height: 15px;
+        border-radius: 10px;
+    }
+    .steps:hover::before,.steps:hover{
+       @extend %active;
+    }
+    .steps:hover .step-text{
+        cursor: pointer;
+        color: $active-color !important;
+    
+    }
+    
+}
+
+
